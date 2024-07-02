@@ -1,0 +1,23 @@
+{
+  "name": "fuck_ctx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "start": "node ./dist/index.js",
+    "dev": "npm run clean && npm run build && npm run start",
+    "clean": "bash ./dev/clean.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cls-hooked": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/cls-hooked": "^4.3.8",
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.2"
+  }
+}
