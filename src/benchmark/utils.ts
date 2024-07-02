@@ -30,6 +30,6 @@ export class Logger extends BaseLogger {
     }
 
     public log(level: LogLevel, message: string): void {
-        this._writeLog({ message, timestamp: new Date().toISOString(), level })
+        this._doWriteLog({ message, timestamp: new Date().toISOString(), level })
     }
 }

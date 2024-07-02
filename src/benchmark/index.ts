@@ -22,15 +22,17 @@ export async function main() {
     console.log(`warming up`)
     const WARMUP_TIMEOUT_MS = 2 * 1000
 
-    let c = 2.3
-    for (; c < 10;) {
-        c = Math.atan2(260, 39) * Math.pow(c, 0.89) + 1
+    let sum = 0;
+    for (let i = 0; i < 1e7; i++) {
+        sum += Math.sqrt(i);
     }
     await new Promise(res => setTimeout(res, WARMUP_TIMEOUT_MS))
-    c = 2.3
-    for (; c < 10;) {
-        c = Math.atan2(260, 39) * Math.pow(c, 0.89) + 1
+    sum = 0;
+    for (let i = 0; i < 1e7; i++) {
+        sum -= Math.sqrt(i) / 2;
     }
+
+    loggers._.log(LogLevel.INFO, `start benchmark`)
 
     const withCliHookedBenchmark = new WithCliHookedBenchmark(getCliService)
     const asyncHookBenchmark = new AsyncHookBenchmark(getCliService)

@@ -31,16 +31,21 @@ export abstract class BaseLogger implements ILogger {
         }
     }
 
+    protected _doWriteLog(logMsg: any) {
+        this.writeTextLog(logMsg)
+    }
+
+    /* disabled log file to keep service's log file at a noraml size */
     protected _writeLog(logMsg: any) {
-        // console.log(JSON.stringify(logMsg));
-        this.writeCsvLog(logMsg)
+        console.log(JSON.stringify(logMsg));
+        // this.writeTextLog(logMsg)
     }
 
     private writeJsonLog(logMsg: any) {
         fs.appendFileSync(this.logFilePath, JSON.stringify(logMsg) + "\n");
     }
 
-    private writeCsvLog(logMsg: any) {
+    private writeTextLog(logMsg: any) {
         const { timestamp, level, message, ...other } = logMsg;
         const textMsg = `time=${timestamp} level=${level} msg="${message}" ${Object.entries(other).map(([k, v]) => `${k}=${v}`).join(" ")}`;
         fs.appendFileSync(this.logFilePath, textMsg + "\n");

@@ -2,8 +2,6 @@ import { BenchmarkHandler, CLIService } from "src/shared"
 import { CtxScope } from "./asyncScope"
 import { Logger } from "./logger";
 import { fuckCtx } from "./fuckCtx";
-
-
 export class AsyncHookBenchmark implements BenchmarkHandler {
     public name = AsyncHookBenchmark.name;
 
@@ -16,7 +14,6 @@ export class AsyncHookBenchmark implements BenchmarkHandler {
             new Logger(`${AsyncHookBenchmark.name}.log`)
         ]
     }
-
 
     public init(): Promise<void> {
         return new Promise(res => {
